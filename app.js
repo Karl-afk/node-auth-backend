@@ -43,13 +43,13 @@ app.post("/register", (req, res) => {
         .save()
         .then((result) => {
           res.status(201).send({
-            message: "Usser wurde erfolgfreich erstellt",
+            message: "User wurde erfolgfreich erstellt",
             result,
           });
         })
         .catch((err) => {
           res.status(500).send({
-            message: "Nutzer konnte nicht angelegt werden",
+            message: "Nutzer existiert bereits",
             err,
           });
         });
