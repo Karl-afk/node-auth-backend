@@ -2,6 +2,9 @@ const express = require("express");
 const bcrypt = require("bcrypt");
 const bodyParser = require("body-parser");
 const jwt = require("jsonwebtoken");
+
+const weatherRouter = require("./routes/weather");
+
 const app = express();
 const port = process.env.PORT || 3000;
 require("dotenv").config();
@@ -110,4 +113,5 @@ app.get("/free-endpoint", (req, res) => {
 app.get("/auth-endpoint", auth, (req, res) => {
   res.json({ message: "Du befindest dich im /auth-endpoint" });
 });
+app.use("/api", weatherRouter);
 app.listen(port, () => console.log(`Example app listening on port ${port}!`));
